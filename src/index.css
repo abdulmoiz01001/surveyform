@@ -1,0 +1,17 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.heading{
+    
+  font-family: "Playfair Display", serif;
+}
+
+.back{
+    background-image: url('/src/assets/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
