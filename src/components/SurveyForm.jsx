@@ -401,7 +401,7 @@ const SurveyForm = () => {
     width: 20px;
     height: 20px;
     border-radius: 99%;
-    background-color: ${theme.palette.mode === 'light' ? blue[200] : blue[700]};
+    background-color: white;
     transform: translateX(-50%);
   }
 
@@ -413,6 +413,7 @@ const SurveyForm = () => {
     font-family: IBM Plex Sans;
     font-weight: 600;
     font-size: 18px;
+    color:white;
     position: relative;
     top: -2em;
     text-align: center;
@@ -524,7 +525,7 @@ const SurveyForm = () => {
 
 
             <tr  >
-              <td className="py-3 px-6">spend on food?</td>
+              <td className="py-3 px-6"><strong>spend on food?</strong></td>
               <td className="py-3 px-6"> {foodSpend} %    <>
 
 
@@ -553,49 +554,49 @@ const SurveyForm = () => {
 
 
             <tr >
-              <td className="py-3 px-6">spend on the venue</td>
+              <td className="py-3 px-6"> <strong>spend on the venue</strong> </td>
               <td className="py-3 px-6"> {venue} %   <>
                 <input type="range" name="foodspend" id="food" value={venue} onChange={(event) => setVenue(event.target.value)} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
               </></td>
             </tr>
             <tr>
-              <td className="py-3 px-6">spend on logistics?(Rent cars, Buses)</td>
+              <td className="py-3 px-6"> <strong> spend on logistics?(Rent cars, Buses)</strong></td>
               <td className="py-3 px-6"> {logistics} %   <>
                 <input type="range" name="foodspend" id="food" value={logistics} onChange={(event) => setLogistics(event.target.value)} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
               </></td>
             </tr>
             <tr>
-              <td className="py-3 px-6">spend on Beauty Salons?</td>
+              <td className="py-3 px-6"> <strong>spend on Beauty Salons?</strong> </td>
               <td className="py-3 px-6"> {beautySalons} %   <>
                 <input type="range" name="foodspend" id="food" value={beautySalons} onChange={(event) => setBeautySalons(event.target.value)} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
               </></td>
             </tr>
             <tr>
-              <td className="py-3 px-6">spend on Entertainment?</td>
+              <td className="py-3 px-6"> <strong> spend on Entertainment?</strong></td>
               <td className="py-3 px-6"> {entertainment} %   <>
                 <input type="range" name="foodspend" id="food" value={entertainment} onChange={(event) => setEntertainment(event.target.value)} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
               </></td>
             </tr>
             <tr>
-              <td className="py-3 px-6">spend on Videography/Photography?</td>
+              <td className="py-3 px-6"> <strong>spend on Videography/Photography?</strong> </td>
               <td className="py-3 px-6"> {videography} %   <>
                 <input type="range" name="foodspend" id="food" value={videography} onChange={(event) => setVideography(event.target.value)} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
               </></td>
             </tr>
             <tr>
-              <td className="py-3 px-6">spend on miscellaneous?(Gifts etc.)</td>
+              <td className="py-3 px-6"> <strong>spend on miscellaneous?(Gifts etc.)</strong> </td>
               <td className="py-3 px-6"> {miscellaneous} %   <>
                 <input type="range" name="foodspend" id="food" value={miscellaneous} onChange={(event) => setMiscellaneous(event.target.value)} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
               </></td>
             </tr>
             <tr>
-              <td className="py-3 px-6">spend on decorations?</td>
+              <td className="py-3 px-6"> <strong>spend on decorations?</strong> </td>
               <td className="py-3 px-6"> {decorations} %   <>
                 <input type="range" name="foodspend" id="food" value={decorations} onChange={(event) => setDecorations(event.target.value)} className='w-[600px] range-input  appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
@@ -603,7 +604,7 @@ const SurveyForm = () => {
             </tr>
             {newRow && <>
               <tr>
-                <td className="py-3 px-6">{customService}</td>
+                <td className="py-3 px-6"><strong>{customService}</strong></td>
                 <td className="py-3 px-6"> {customPercentage} %   <>
                   <input type="range" name="foodspend" id="food" value={customPercentage} onChange={(event) => setCustomPercentage(event.target.value)} className='w-[600px] range-input  appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
