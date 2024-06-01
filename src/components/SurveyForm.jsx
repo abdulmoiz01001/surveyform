@@ -27,6 +27,8 @@ const SurveyForm = () => {
     p: 4,
   };
 
+  const [ totalPercentage, setTotalPercentage ] = useState(0)
+
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -66,10 +68,37 @@ const SurveyForm = () => {
 
   const setAllPercentages = () => {
 
+  let sum = 0;
+    if(newRow){
+       sum = foodSpend + venue + logistics + beautySalons + entertainment + videography + miscellaneous + decorations + customPercentage;
+       console.log(foodSpend)
+        console.log(venue)
+        console.log(logistics)
+        console.log(beautySalons)
+        console.log(entertainment)
+        console.log(videography)
+        console.log(miscellaneous)
+        console.log(decorations)
+        console.log(customPercentage)
+        setTotalPercentage(sum)
 
+      console.log(sum)
+    }else{
+       sum = foodSpend + venue + logistics + beautySalons + entertainment + videography + miscellaneous + decorations;
+       console.log(foodSpend)
+        console.log(venue)
+        console.log(logistics)
+        console.log(beautySalons)
+        console.log(entertainment)
+        console.log(videography)
+        console.log(miscellaneous)
+        console.log(decorations)
+        setTotalPercentage(sum)
+        
+      console.log(sum)
+    }
 
-    let sum = foodSpend + venue + logistics + beautySalons + entertainment + videography + miscellaneous + decorations;
-    console.log(sum)
+   
     if (sum <= 100) {
 
       if (newRow) {
@@ -229,7 +258,7 @@ const SurveyForm = () => {
     , [index])
 
   const inputValueSaved = () => {
-    if (inputValue === '' && finalArray === null) {
+    if (inputValue == '' && index !== 6) {
 
       setError(true)
       return;
@@ -244,6 +273,11 @@ const SurveyForm = () => {
 
     }
     else if (index == 6) {
+      if(inputValues.includes(finalArray)){
+        console.log("Already Exists")
+        inputValues.pop();
+      }
+      console.log("not existe")
       setInputValues([...inputValues, finalArray])
       // //console.log(inputValues)
     }
@@ -444,6 +478,7 @@ const SurveyForm = () => {
   const handleModal = () => {
     setNewRow(true)
     setNewField(false)
+    setAllPercentages();
 
   }
 
@@ -459,7 +494,7 @@ const SurveyForm = () => {
           </div>
           <div className='flex flex-col justify-center items-start w-[80%]' >
             <label className='text-xl' htmlFor="">Percentage</label>
-            <input className='w-full' type="number" value={customPercentage} onChange={(e) => { setCustomPercentage(e.currentTarget.value) }} />
+            <input className='w-full' type="number" value={customPercentage} onChange={(e) => { setCustomPercentage(Number(e.currentTarget.value)) }} />
           </div>
           <button className='w-[70px] bg-pink-400 rounded-md active:scale-105' type='submit' onClick={() => { handleModal() }} > Submit </button>
         </div></>
@@ -529,7 +564,7 @@ const SurveyForm = () => {
               <td className="py-3 px-6"> {foodSpend} %    <>
 
 
-                <input type="range" name="foodspend" id="food" value={foodSpend} onChange={(event) => setFoodSpend(event.target.value)} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
+                <input type="range" name="foodspend" id="food" value={foodSpend} onChange={(event) => setFoodSpend(Number(event.target.value))} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
                 {/* <Box sx={{ width: 300 }}> */}
                 {/* <Slider
         aria-label="Temperature"
@@ -556,49 +591,49 @@ const SurveyForm = () => {
             <tr >
               <td className="py-3 px-6"> <strong>spend on the venue</strong> </td>
               <td className="py-3 px-6"> {venue} %   <>
-                <input type="range" name="foodspend" id="food" value={venue} onChange={(event) => setVenue(event.target.value)} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
+                <input type="range" name="foodspend" id="food" value={venue} onChange={(event) => setVenue(Number(event.target.value))} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
               </></td>
             </tr>
             <tr>
               <td className="py-3 px-6"> <strong> spend on logistics?(Rent cars, Buses)</strong></td>
               <td className="py-3 px-6"> {logistics} %   <>
-                <input type="range" name="foodspend" id="food" value={logistics} onChange={(event) => setLogistics(event.target.value)} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
+                <input type="range" name="foodspend" id="food" value={logistics} onChange={(event) => setLogistics(Number(event.target.value))} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
               </></td>
             </tr>
             <tr>
               <td className="py-3 px-6"> <strong>spend on Beauty Salons?</strong> </td>
               <td className="py-3 px-6"> {beautySalons} %   <>
-                <input type="range" name="foodspend" id="food" value={beautySalons} onChange={(event) => setBeautySalons(event.target.value)} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
+                <input type="range" name="foodspend" id="food" value={beautySalons} onChange={(event) => setBeautySalons(Number(event.target.value))} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
               </></td>
             </tr>
             <tr>
               <td className="py-3 px-6"> <strong> spend on Entertainment?</strong></td>
               <td className="py-3 px-6"> {entertainment} %   <>
-                <input type="range" name="foodspend" id="food" value={entertainment} onChange={(event) => setEntertainment(event.target.value)} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
+                <input type="range" name="foodspend" id="food" value={entertainment} onChange={(event) => setEntertainment(Number(event.target.value))} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
               </></td>
             </tr>
             <tr>
               <td className="py-3 px-6"> <strong>spend on Videography/Photography?</strong> </td>
               <td className="py-3 px-6"> {videography} %   <>
-                <input type="range" name="foodspend" id="food" value={videography} onChange={(event) => setVideography(event.target.value)} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
+                <input type="range" name="foodspend" id="food" value={videography} onChange={(event) => setVideography(Number(event.target.value))} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
               </></td>
             </tr>
             <tr>
               <td className="py-3 px-6"> <strong>spend on miscellaneous?(Gifts etc.)</strong> </td>
               <td className="py-3 px-6"> {miscellaneous} %   <>
-                <input type="range" name="foodspend" id="food" value={miscellaneous} onChange={(event) => setMiscellaneous(event.target.value)} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
+                <input type="range" name="foodspend" id="food" value={miscellaneous} onChange={(event) => setMiscellaneous(Number(event.target.value))} className='w-[600px] range-input appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
               </></td>
             </tr>
             <tr>
               <td className="py-3 px-6"> <strong>spend on decorations?</strong> </td>
               <td className="py-3 px-6"> {decorations} %   <>
-                <input type="range" name="foodspend" id="food" value={decorations} onChange={(event) => setDecorations(event.target.value)} className='w-[600px] range-input  appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
+                <input type="range" name="foodspend" id="food" value={decorations} onChange={(event) => setDecorations(Number(event.target.value))} className='w-[600px] range-input  appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
               </></td>
             </tr>
@@ -606,13 +641,14 @@ const SurveyForm = () => {
               <tr>
                 <td className="py-3 px-6"><strong>{customService}</strong></td>
                 <td className="py-3 px-6"> {customPercentage} %   <>
-                  <input type="range" name="foodspend" id="food" value={customPercentage} onChange={(event) => setCustomPercentage(event.target.value)} className='w-[600px] range-input  appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
+                  <input type="range" name="custom" id="food" value={customPercentage} onChange={(event) => setCustomPercentage(Number(event.target.value))} className='w-[600px] range-input  appearance-none  h-3 bg-purple-500 rounded-lg overflow-hidden  ' />
 
                 </></td>
               </tr></>}
 
 
           </tbody>
+          <h1> Total Percentage : {totalPercentage}</h1>
         </table>
       </div></>}
       {index === 6 && <>
